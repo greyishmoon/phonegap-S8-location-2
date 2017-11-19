@@ -1,4 +1,7 @@
-function onAppReady() {
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+    alert("READY");
     if( navigator.splashscreen && navigator.splashscreen.hide ) {   // Cordova API detected
         navigator.splashscreen.hide() ;
     }
@@ -29,7 +32,6 @@ function onAppReady() {
 
     
 }
-document.addEventListener("app.Ready", onAppReady, false) ;
 
 
 //Call this function when you want to get the current position
