@@ -1,7 +1,7 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
-    alert("READY");
+    //alert("READY");
     if( navigator.splashscreen && navigator.splashscreen.hide ) {   // Cordova API detected
         navigator.splashscreen.hide() ;
     }
@@ -182,7 +182,8 @@ function fail(err) {
 ////////////// MAP ///////////////
 
 function page3load() {
-    alert("PAGE 3");
+    //alert("PAGE 3");
+    $('#map').text("LINK OK");
 }
 
 
