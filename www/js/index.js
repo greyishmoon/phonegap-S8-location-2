@@ -183,7 +183,7 @@ function fail(err) {
 
 function page3load() {
     //alert("PAGE 3");
-    $('#map').text("LINK OK");
+    $('#map').text("SEE SEPERATE MAP APP");
 }
 
 
