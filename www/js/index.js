@@ -28,7 +28,8 @@ function onDeviceReady() {
     // COMPASS - toggle switch to turn Geolocation.watchPosition() on/off
     $( document ).on( "change", "#flip-loc", watchPosToggle);
     
-
+    // MAP - listener for page 3 load
+    $( document ).on( "pagecreate", "#page3", page3load);
 
     
 }
@@ -48,12 +49,12 @@ var permpos;
 
 //called when the position is successfully determined
 function successPosition(position) {
-	permpos = position;
+    
 	//You can find out more details about what the position obejct contains here:
 	// http://www.w3schools.com/html/html5_geolocation.asp
 	
 	//lets get some stuff out of the position object
-    var longitude = permpos.coords.longitude;
+    var longitude = position.coords.longitude;
 	var latitude = position.coords.latitude;
     var accuracy = position.coords.accuracy;
     var altitude = position.coords.altitude;
@@ -176,6 +177,12 @@ function success(pos) {
 function fail(err) {
     alert('ERROR(' + err.code + '): ' + err.message);
   console.warn('ERROR(' + err.code + '): ' + err.message);
+}
+
+////////////// MAP ///////////////
+
+function page3load() {
+    alert("PAGE 3");
 }
 
 
