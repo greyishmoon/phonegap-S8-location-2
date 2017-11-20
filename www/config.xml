@@ -15,6 +15,7 @@
     <author href="worcester.ac.uk" email="c.blythe@worc.ac.uk">
         WBS Computing
     </author>
+    
 <!-- removed to allow cordova-plugin-geolocation-android-activator to work-->
 <!--    <preference name="phonegap-version" value="cli-7.0.1" />-->
 	
