@@ -5,10 +5,10 @@ function onDeviceReady() {
     if( navigator.splashscreen && navigator.splashscreen.hide ) {   // Cordova API detected
         navigator.splashscreen.hide() ;
     }
-    
+
     // Listener for button
     $('#getLocationButton').on("click", getPosition);
-    
+
     // Swip page nav
     $( document ).on( "swipeleft", "#header1", function() {
         $.mobile.changePage('#page2', { transition: "slide"} );
@@ -24,14 +24,14 @@ function onDeviceReady() {
         $.mobile.changePage('#page2', { transition: "slide",
             reverse: true } );
     });
-    
+
     // COMPASS - toggle switch to turn Geolocation.watchPosition() on/off
     $( document ).on( "change", "#flip-loc", watchPosToggle);
-    
+
     // MAP - listener for page 3 load
     $( document ).on( "pagecreate", "#page3", page3load);
 
-    
+
 }
 
 
@@ -39,7 +39,7 @@ function onDeviceReady() {
 function getPosition() {
 	//change time box to show updated message
 	$('#time').val("Getting data...");
-	
+
 	//instruct location service to get position with appropriate callbacks
 	navigator.geolocation.getCurrentPosition(successPosition, failPosition);
 }
@@ -49,10 +49,10 @@ var permpos;
 
 //called when the position is successfully determined
 function successPosition(position) {
-    
+
 	//You can find out more details about what the position obejct contains here:
 	// http://www.w3schools.com/html/html5_geolocation.asp
-	
+
 	//lets get some stuff out of the position object
     var longitude = position.coords.longitude;
 	var latitude = position.coords.latitude;
@@ -61,7 +61,7 @@ function successPosition(position) {
     var altacc = position.coords.altitudeAccuracy;
     var heading = position.coords.heading;
     var speed = position.coords.speed;
-    
+
     // DATE + TIME
     // position.timestamp returuns type domTimeStamp
 	var domTimeStamp = position.timestamp;
@@ -69,29 +69,29 @@ function successPosition(position) {
     var date = new Date(domTimeStamp);
     // convert to formated time string
     var time = date.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
-    
-   
+
+
     // Display position data
     $('#longtext').val(longitude);
 	$('#lattext').val(latitude);
-    
+
     // Display time
     $('#time').val("Recieved data at " + time);
-    
+
     // Display extras
 	$('#acctext').val(accuracy);
     $('#alttext').val(altitude);
     $('#altacctext').val(altacc);
     $('#headtext').val(heading);
     $('#speedtext').val(speed);
-    
+
 }
 
 //called if the position is not obtained correctly
 function failPosition(error) {
 	//change time box to show updated message
 	$('#timeF').val("Error getting data: " + error);
-	
+
 }
 
 //////////// COMPASS ///////////
@@ -108,10 +108,10 @@ var watchID;
 //		maximumAge : 0
 //};
 
-//var locationOptions = { 
-//	maximumAge: 10000, 
-//	timeout: 6000, 
-//	enableHighAccuracy: true 
+//var locationOptions = {
+//	maximumAge: 10000,
+//	timeout: 6000,
+//	enableHighAccuracy: true
 //};
 
 
@@ -124,15 +124,15 @@ function watchPosToggle() {
             startWatch();
         } else {
             stopWatch();
-        }	
+        }
 }
 
 function startWatch(){
     // Set optiond
-    var locationOptions = { 
-        maximumAge: 10000, 
-        timeout: 6000, 
-        enableHighAccuracy: true 
+    var locationOptions = {
+        maximumAge: 10000,
+        timeout: 6000,
+        enableHighAccuracy: true
     };
     // Set geoWatch listener and save ID
     watchID = navigator.geolocation.watchPosition(success, fail);//, locationOptions);
@@ -144,7 +144,7 @@ function stopWatch(){
 		navigator.geolocation.clearWatch(watchID);
 		watchID = null;
 //	}
-    
+
     $('#clongtext').val("Monitoring OFF");
 	$('#clattext').val("Monitoring OFF");
     // Display time
@@ -164,7 +164,7 @@ function success(pos) {
     var cdate = new Date(cdomTimeStamp);
     // convert to formated time string
     var ctime = cdate.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
-    
+
     // Display position data
     $('#clongtext').val(clong);
 	$('#clattext').val(clat);
@@ -185,6 +185,3 @@ function page3load() {
     //alert("PAGE 3");
     $('#map').text("SEE SEPERATE MAP APP");
 }
-
-
-
